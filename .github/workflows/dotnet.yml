@@ -26,9 +26,14 @@ jobs:
         Get-Process -Name ZStormBot -ErrorAction SilentlyContinue | Stop-Process -Force
     - name: Copy new Instance
       run: C:\Users\opc\Desktop\CopyBuild.ps1
-    - name : Run
+        
+  notify:
+    needs: build
+    runs-on: self-hosted
+
+    steps:
+    - name: Start
       run: |
-        cd C:\ZStormBot\
-        $RUNNER_TRACKING_ID=""
-        Start-Process -FilePath ZStormBot.exe
+        cd C/ZStromBot
+        Start-Process ZStormBot
         
