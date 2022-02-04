@@ -27,13 +27,3 @@ jobs:
     - name: Copy new Instance
       run: C:\Users\opc\Desktop\CopyBuild.ps1
         
-  notify:
-    needs: build
-    runs-on: self-hosted
-
-    steps:
-    - name: Start
-      run: |
-        cd C:\ZStormBot
-        Start-Process ZStormBot
-        
