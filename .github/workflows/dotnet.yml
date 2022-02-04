@@ -28,5 +28,5 @@ jobs:
     - name : Run
       run: |
         cd C:\ZStormBot\
-        RUNNER_TRACKING_ID="" ZStormBot.exe
+        RUNNER_TRACKING_ID="" && ./ZStormBot.exe
         
