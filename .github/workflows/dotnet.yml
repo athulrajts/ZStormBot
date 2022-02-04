@@ -20,4 +20,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln"
     - name: Build
-      run: dotnet build "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln" --no-restore
+      run: dotnet build "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln" --no-restore -c Release
