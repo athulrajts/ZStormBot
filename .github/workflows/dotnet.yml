@@ -34,6 +34,6 @@ jobs:
     steps:
     - name: Start
       run: |
-        cd C/ZStromBot
+        cd C:\ZStormBot
         Start-Process ZStormBot
         
