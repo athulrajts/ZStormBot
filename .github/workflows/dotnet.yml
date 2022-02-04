@@ -23,5 +23,10 @@ jobs:
       run: dotnet build "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln" --no-restore -c Release
     - name: Stop current Instance
       run: Stop-Process -Name ZStormBot
-    - name: Start new Instance
+    - name: Copy new Instance
       run: C:\Users\opc\Desktop\CopyBuild.ps1
+    - name : Run
+      run: |
+        cd C:\ZStormBot\
+        RUNNER_TRACKING_ID="" ZStormBot.exe
+        
