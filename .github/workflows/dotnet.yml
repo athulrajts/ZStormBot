@@ -1,0 +1,29 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln"
+    - name: Build
+      run: dotnet build "C:\Users\opc\Desktop\GitHubActions\actions-runner\_work\ZStormBot\ZStormBot\src\ZStormBot.sln" --no-restore -c Release
+    - name: Stop current Instance
+      run: |
+        Get-Process -Name ZStormBot -ErrorAction SilentlyContinue | Stop-Process -Force
+    - name: Copy new Instance
+      run: C:\Users\opc\Desktop\CopyBuild.ps1
+        
