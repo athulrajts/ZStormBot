@@ -65,16 +65,5 @@ public class DotaConstants : IDotaConstants
     {
         _heroesById = JsonSerializer.Deserialize<Dictionary<int, HeroInfo>>(File.ReadAllText(FILE_HEROES));
         _heroesByName = _heroesById.ToDictionary(x => x.Value.Name, x=> x.Value);
-
-
-        var sb = new StringBuilder();
-        sb.AppendLine("public class HeroNames");
-        sb.AppendLine("{");
-        foreach (var item in _heroesByName.OrderBy(x => x.Value.LocalizedName))
-        {
-            sb.AppendLine($"public const string {item.Value.LocalizedName.Replace(" ", string.Empty)} = \"{item.Value.Name}\"");
-        }
-        sb.AppendLine("}");
-        File.WriteAllText("heronames.cs", sb.ToString());
     }
 }

@@ -67,8 +67,17 @@ public class BasicCommands : BaseCommandModule
 
         var vnc = vnext.GetConnection(ctx.Guild);
         if (vnc == null)
+        {
             throw new InvalidOperationException("Not connected in this guild.");
+        }
 
         vnc.Disconnect();
+        await Task.Delay(0);
+    }
+
+    [Command("inviteurl")]
+    public async Task InviteUrl(CommandContext ctx)
+    {
+        await ctx.RespondAsync("https://discord.com/oauth2/authorize?client_id=935785059535978507&scope=bot&permissions=8");
     }
 }

@@ -1,16 +1,17 @@
 ﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.VoiceNext;
-using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Text;
 using ZStormBot.Interfaces;
 
 namespace ZStormBot.Commands;
 
-public class Sounds : BaseCommandModule
+public class SoundCommands : BaseCommandModule
 {
     public ISoundRepository SoundRepository { get; set; }
+    public async Task PlaySoundById(VoiceNextConnection vnc, int id) => await SoundRepository.PlaySound(vnc, id);
+    public async Task PlaySoundByName(VoiceNextConnection vnc, string name) => await SoundRepository.PlaySound(vnc, name);
+
 
     [Command("cl")]
     public async Task PlaySound(CommandContext ctx, string name)
@@ -37,11 +38,6 @@ public class Sounds : BaseCommandModule
             await PlaySoundByName(vnc, name);
         }
     }
-
-    public async Task PlaySoundById(VoiceNextConnection vnc, int id) => await SoundRepository.PlaySound(vnc, id);
-
-    public async Task PlaySoundByName(VoiceNextConnection vnc, string name) => await SoundRepository.PlaySound(vnc, name);
-
 
     [Command("vlist")]
     public async Task ListVoiceLines(CommandContext ctx)
